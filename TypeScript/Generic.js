@@ -37,3 +37,21 @@ console.log(numberBox.getValue());
 var stringBox = new Box("hello"); // stringBox has type 'Box<string>'
 var pair = Box.wrap(1, "pencil"); // returns a tuple of type [T, U].
 console.log(pair);
+// Generic Constraints
+console.log("\"Generic Constraints\"");
+var Person = /** @class */ (function () {
+    function Person(fname, lname) {
+        this.firstName = fname;
+        this.lastName = lname;
+    }
+    return Person;
+}());
+// display function with generic constraint
+// T extends Person. This means that T must be a type that is a subclass of Person
+function display(per) {
+    console.log("".concat(per.firstName, " ").concat(per.lastName));
+}
+var per = new Person("Bill", "Gates");
+display(per);
+//Since the display function is constrained to accept only objects of type Person (or its subclasses), TypeScript will give an error because a string doesn't have the firstName and lastName properties required by the Person class.
+// display("Bill Gates"); 
