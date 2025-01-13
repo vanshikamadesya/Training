@@ -43,6 +43,7 @@ class Box<T> {              // generic class
 const numberBox = new Box(42);    // numberBox has type 'Box<number>'
 console.log(numberBox.getValue());
 const stringBox = new Box("hello"); // stringBox has type 'Box<string>'
+console.log(stringBox.getValue());
 const pair = Box.wrap(1,"pencil");  // returns a tuple of type [T, U].
 console.log(pair);
 
@@ -70,3 +71,6 @@ display(per);
 //Since the display function is constrained to accept only objects of type Person (or its subclasses), TypeScript will give an error because a string doesn't have the firstName and lastName properties required by the Person class.
 
 // display("Bill Gates"); 
+
+
+export{}
