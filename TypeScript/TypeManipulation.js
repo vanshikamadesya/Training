@@ -80,7 +80,29 @@ var feed = feedDog; // Works, because Dog is a subtype of Animal
 feed(new Dog());
 // keyof type operator
 console.log("\"keyof type operator\"");
-// type PersonValues = typeof Person;
 var key;
 key = "name";
 console.log(typeof key);
+// index type
+console.log("\"index type\"");
+var MyArray = [
+    { name: "Alice", age: 15 },
+    { name: "Bob", age: 23 },
+    { name: "Eve", age: 38 },
+];
+// conditional type
+console.log("\"conditional type\"");
+// mapped type
+console.log("\"mapped type\"");
+var prefixedKeys = {
+    prefix_name: "John",
+    prefix_age: 30,
+    prefix_isActive: true
+};
+console.log(prefixedKeys);
+// template literal type
+console.log("\"template literal type\"");
+var greeting = "Hello TypeScript";
+console.log(greeting);
+var redItem = "color-red";
+var blueItem = "color-blue";
