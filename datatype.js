@@ -25,7 +25,7 @@ let str = `Hello`;              // accessing string
 console.log( str[0] ); 
 console.log( str.at(0) );
 
-console.log('Javascript'.length);    // string lenght
+console.log('Javascript'.length);    // string length
 
 let string = "Widget with id"
 console.log( str.indexOf('Widget') ); // 0, because 'Widget' is found at the beginning

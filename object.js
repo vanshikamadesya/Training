@@ -238,9 +238,22 @@ console.log(user.isAdmin);
 
 
 // Optional chaining '?'
-let users = {}; // user has no address
-console.log( users?.address?.street ); 
+// let users = {}; // user has no address
+// console.log( users?.address?.street ); 
 
-  
+const users = {
+    name: "Vanshika",
+    address: {
+        city: "Lucknow",
+        postalCode: 226001
+    }
+};
+console.log(users?.address?.city); // Output: "Lucknow"
+
+// Property doesn't exist
+console.log(users?.address?.country); // Output: undefined
+
+console.log(users.address.country); // Error: Cannot read properties of undefined
+
 
   

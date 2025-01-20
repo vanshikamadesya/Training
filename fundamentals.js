@@ -158,11 +158,11 @@ console.log(user ?? "anonymus")
 let user2 = "Aman"
 console.log(user2 ?? "anonymus")
 
-let firstName = null;
+let firstName = "super";
 let lastName = null;
 let nickName = "Supercoder";
 // shows the first defined value:
-console.log(firstName ?? lastName ?? nickName ?? "Anonymous"); // Supercoder
+console.log(firstName ?? lastName ?? nickName ?? "Anonymous"); 
 
 let firstName1 = null;
 let lastName1 = null;
