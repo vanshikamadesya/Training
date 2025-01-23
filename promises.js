@@ -74,20 +74,74 @@ new Promise((resolve, reject) => {
 // Promise API
 console.log("\"Promise API\"");
 let promise1 = Promise.resolve(10); 
-// let promise2 = Promise.reject("Error in promise2"); 
-let promise2 = new Promise((resolve) =>setTimeout(() => resolve(20), 1000)); 
-let promise3 = new Promise((resolve) => setTimeout(() => resolve(30), 2000)); 
+let promise2 = Promise.reject("Error in promise2"); 
+let promise3 = new Promise((resolve) =>setTimeout(() => resolve(30), 1000)); 
+let promise4 = new Promise((resolve) => setTimeout(() => resolve(40), 2000)); 
+// let promise5 = new Promise((resolve,reject) => setTimeout(() =>reject('Error in promise 5'), 3000)); 
 
 // Promise.all([promise1, promise2, promise3])
 
 // Promise.allSettled([promise1, promise2, promise3])
+
 Promise.race([promise1, promise2, promise3])
+
+// Promise.any([ promise2,  promise5])
   .then((results) => {
     console.log(results);
   })
   .catch((error) => {
     console.log("One of the promises failed:", error);
   });
+
+
+
+// Promisification
+function promisify(f) {
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      // Our custom callback function to handle success and failure
+      function callback(err, result) {
+        if (err) {
+          reject(err); 
+        } else {
+          resolve(result);
+        }
+      }
+
+      // Append the custom callback to the arguments
+      args.push(callback);
+      
+      // Call the original function (`f`) with the new arguments, including the callback
+      f.call(this, ...args);
+    });
+  };
+}
+
+
+
+
+// async await
+function fakeApiCall() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Data received");
+    }, 2000);
+  });
+}
+async function getData() {
+  try {
+    console.log("Fetching data...");
+    
+    // Use await to pause the function until the promise is resolved
+    const result = await fakeApiCall();
+    
+    console.log(result); 
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+getData(); 
+
 
 
 
